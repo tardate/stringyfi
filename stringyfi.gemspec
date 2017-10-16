@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = StringyFi::VERSION
   spec.authors       = ["Paul Gallagher"]
   spec.email         = ["gallagher.paul@gmail.com"]
-  spec.summary       = "Convert MusicXML to Boldport Stringy encoding"
-  spec.homepage      = ""
+  spec.summary       = "Convert MusicXML to PIC assembler for the Boldport Stringy"
+  spec.homepage      = "https://github.com/tardate/stringyfi"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -17,8 +17,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "activesupport"
-  spec.add_runtime_dependency "nokogiri"
+  spec.add_runtime_dependency "nokogiri", "~> 1.8"
 
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
