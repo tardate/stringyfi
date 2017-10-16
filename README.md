@@ -2,6 +2,8 @@
 
 Convert MusicXML to PIC assembler for running on the Boldport Club Stringy.
 
+[![Build Status](https://travis-ci.org/tardate/stringyfi.svg?branch=master)](https://travis-ci.org/tardate/stringyfi)
+
 ## About the Stringy
 
 The [Stringy](https://www.boldport.com/products/stringy/) is an open source hardware project
