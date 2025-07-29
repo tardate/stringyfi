@@ -161,6 +161,5 @@ describe StringyFi::Converter do
         subject
       end
     end
-
   end
 end

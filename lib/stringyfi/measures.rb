@@ -1,5 +1,4 @@
 class StringyFi::Measures < Array
-
   def shortest_fractional_duration
     result = 1
     each do |measure|
@@ -23,5 +22,4 @@ class StringyFi::Measures < Array
     end
     [lo, hi]
   end
-
 end

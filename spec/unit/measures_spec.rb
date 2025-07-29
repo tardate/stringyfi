@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe StringyFi::Measures do
-
   let(:note_class) { StringyFi::Note }
   let(:measures) { described_class.new }
 
@@ -30,5 +29,4 @@ describe StringyFi::Measures do
       expect(subject).to eql([2, 4])
     end
   end
-
 end

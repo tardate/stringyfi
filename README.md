@@ -2,8 +2,6 @@
 
 Convert MusicXML to PIC assembler for running on the Boldport Club Stringy.
 
-[![Build Status](https://travis-ci.org/tardate/stringyfi.svg?branch=master)](https://travis-ci.org/tardate/stringyfi)
-
 ## About the Stringy
 
 The [Stringy](https://www.boldport.com/products/stringy/) is an open source hardware project
@@ -36,11 +34,11 @@ Add this line to your application's Gemfile:
 
 And then execute:
 
-    $ bundle
+    bundle
 
 Or install it yourself as:
 
-    $ gem install stringyfi
+    gem install stringyfi
 
 ## Usage
 
@@ -49,7 +47,7 @@ and emits the assembler source on STDOUT (so it can be redirected as appropriate
 
 For example:
 
-    $ stringyfi ./spec/fixtures/music_xml/chromatic.xml > ../CustomDemo.X/demo.tun
+    stringyfi ./spec/fixtures/music_xml/chromatic.xml > ../CustomDemo.X/demo.tun
 
 The
 [spec/fixtures](./spec/fixtures/music_xml)
