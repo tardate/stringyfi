@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module FixturesHelper
-  def xml_sample_path(name='chromatic.xml')
+  def xml_sample_path(name = 'chromatic.xml')
     File.join(xml_samples_path, name)
   end
 

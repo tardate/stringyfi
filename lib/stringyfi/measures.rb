@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# extend Array with methods for working with measures
 class StringyFi::Measures < Array
   def shortest_fractional_duration
     result = 1
@@ -10,10 +13,11 @@ class StringyFi::Measures < Array
   end
 
   def octave_range
-    lo =  hi = nil
+    lo = hi = nil
     each do |measure|
       measure.each do |note|
         next if note.rest?
+
         lo ||= note.octave
         hi ||= note.octave
         lo = note.octave if note.octave < lo
