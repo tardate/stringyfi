@@ -1,89 +1,91 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe StringyFi::Converter do
   subject(:converter) { described_class.new(filename) }
 
-  context "with chromatic.xml sample" do
+  context 'with chromatic.xml sample' do
     let(:filename) { xml_sample_path }
 
-    describe "#xml_doc" do
+    describe '#xml_doc' do
       subject { converter.xml_doc }
-      it "returns the XML doc" do
+      it 'returns the XML doc' do
         expect(subject).to be_a(Nokogiri::XML::Document)
       end
     end
 
-    describe "#identification" do
+    describe '#identification' do
       subject(:identification) { converter.identification }
-      it "returns expected metadata" do
+      it 'returns expected metadata' do
         expect(subject).to eql({
-          title: "chromatic scale",
+          title: 'chromatic scale',
           encoding: {
-            date: "2017-10-15",
-            software: "Guitar Pro 7.0.6"
+            date: '2017-10-15',
+            software: 'Guitar Pro 7.0.6'
           }
         })
       end
     end
 
-    describe "#part_list" do
+    describe '#part_list' do
       subject(:part_list) { converter.part_list }
-      it "returns an array of parts" do
+      it 'returns an array of parts' do
         expect(part_list).to eql([
-          {id: "P1"}
+          { id: 'P1' }
         ])
       end
     end
 
-    describe "#parts" do
+    describe '#parts' do
       subject(:parts) { converter.parts }
-      it "returns parts corresponding to parts list" do
+      it 'returns parts corresponding to parts list' do
         expect(parts.count).to eql(converter.part_list.count)
       end
     end
 
-    describe "#measures" do
+    describe '#measures' do
       subject(:measures) { converter.measures }
-      it "has the correct number of measures" do
+      it 'has the correct number of measures' do
         expect(measures).to be_a(StringyFi::Measures)
         expect(measures.count).to eql(7)
       end
     end
 
-    describe "#measure" do
+    describe '#measure' do
       subject(:measure) { converter.measure(measure_id) }
-      context "with first measure" do
+      context 'with first measure' do
         let(:measure_id) { 0 }
-        it "has the correct note info" do
+        it 'has the correct note info' do
           expect(measure).to be_an(Array)
           expect(measure.size).to eql(1)
           expect(measure[0]).to be_a(StringyFi::Note)
-          expect(measure[0].to_str).to eql("3:E:0")
+          expect(measure[0].to_str).to eql('3:E:0')
         end
       end
     end
 
-    describe "#score_preamble" do
+    describe '#score_preamble' do
       subject { converter.score_preamble }
-      it "includes the expected identification" do
+      it 'includes the expected identification' do
         expect(subject).to include(';** Title: chromatic scale')
       end
-      it "includes the tstart" do
+      it 'includes the tstart' do
         expect(subject).to include("\ttstart DemoTune")
       end
     end
 
-    describe "#score_coda" do
+    describe '#score_coda' do
       subject { converter.score_coda }
-      it "includes a rest and tstop" do
+      it 'includes a rest and tstop' do
         expect(subject).to include("\ttrest 8")
         expect(subject).to include("\ttstop")
       end
     end
 
-    describe "#score_body" do
-      subject { converter.score_body(1/32.0) }
-      it "returns the expected conversion" do
+    describe '#score_body' do
+      subject { converter.score_body(1 / 32.0) }
+      it 'returns the expected conversion' do
         expect(subject).to eql([
           "\t; measure 1",
           "\ttoctave -1",
@@ -150,9 +152,9 @@ describe StringyFi::Converter do
       end
     end
 
-    describe "#convert!" do
+    describe '#convert!' do
       subject { converter.convert! }
-      it "calls all the necessary bits" do
+      it 'calls all the necessary bits' do
         expect(converter).to receive(:score_preamble)
         expect(converter).to receive(:score_body)
         expect(converter).to receive(:score_coda)

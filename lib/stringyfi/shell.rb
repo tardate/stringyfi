@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
+# CLI support
 class StringyFi::Shell
   attr_accessor :converter
 
-  def initialize(args=[])
+  def initialize(args = [])
     filename = args.first || File.join(File.dirname(__FILE__), '..', '..', 'spec', 'fixtures', 'music_xml', 'chromatic.xml')
     self.converter = StringyFi::Converter.new(filename)
   end

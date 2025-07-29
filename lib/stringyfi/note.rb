@@ -1,40 +1,44 @@
-class StringyFi::Note
-  attr_accessor :name, :octave, :alter
-  attr_accessor :tempo
-  attr_accessor :fractional_duration
+# frozen_string_literal: true
 
-  def initialize(name, octave=4, alter=nil, duration=1, duration_type="quarter")
-    self.name = "#{name}".upcase
-    self.octave = "#{octave}".to_i
-    self.alter = alter.to_i rescue 0
+# Represents a musical note
+class StringyFi::Note
+  attr_accessor :name, :octave, :alter, :tempo, :fractional_duration
+
+  def initialize(name, octave = 4, alter = nil, duration = 1, duration_type = 'quarter')
+    self.name = name.to_s.upcase
+    self.octave = octave.to_s.to_i
+    self.alter = begin
+      alter.to_i
+    rescue StandardError
+      0
+    end
     self.fractional_duration = calculate_fractional_duration(duration, duration_type)
   end
 
   def rest?
-    name == ""
+    name == ''
   end
 
   def calculate_fractional_duration(duration, duration_type)
     divisor = {
-      "half" => 2.0,
-      "quarter" => 4.0,
-      "eighth" => 8.0,
-      "16th" => 16.0,
-      "32nd" =>  32.0
+      'half' => 2.0,
+      'quarter' => 4.0,
+      'eighth' => 8.0,
+      '16th' => 16.0,
+      '32nd' => 32.0
     }[duration_type] || 1.0
-    duration/divisor
+    duration / divisor
   end
 
   # return [short, medium, long, very_long] repeats for the note
   # TODO: scale medium, long, very_long durations correctly
   def stringy_durations(shortest_fractional_duration)
     time_units = (fractional_duration / shortest_fractional_duration).to_i
-    case
-    when time_units >= 8
+    if time_units >= 8
       [0, 0, 0, 1]
-    when time_units >= 4
+    elsif time_units >= 4
       [0, 0, 1, 0]
-    when time_units >= 2
+    elsif time_units >= 2
       [0, 1, 0, 0]
     else
       [1, 0, 0, 0]
@@ -52,7 +56,7 @@ class StringyFi::Note
         'E' => 'D',
         'A' => 'G',
         'D' => 'C',
-        'G' => 'F',
+        'G' => 'F'
       }[name]
       "#{sharpy_name}#{relative_octave}S"
     else
@@ -90,6 +94,6 @@ class StringyFi::Note
   end
 
   def <=>(other)
-    self.to_note_id <=> other.to_note_id
+    to_note_id <=> other.to_note_id
   end
 end

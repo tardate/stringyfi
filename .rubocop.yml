@@ -1,0 +1,56 @@
+AllCops:
+  NewCops: disable
+  SuggestExtensions: false
+  TargetRubyVersion: 3.0
+
+Gemspec/RequiredRubyVersion:
+  Enabled: false
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/LineLength:
+  Max: 125
+
+Metrics/AbcSize:
+  Max: 46
+
+Metrics/BlockLength:
+  Max: 150
+
+Metrics/ClassLength:
+  Max: 150
+
+Metrics/CyclomaticComplexity:
+  Max: 9
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/ParameterLists:
+  MaxOptionalParameters: 4
+
+Metrics/PerceivedComplexity:
+  Max: 9
+
+Style/BlockComments:
+  Exclude:
+    - 'spec/spec_helper.rb'
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Style/Documentation:
+  Exclude:
+    - 'spec/**/*'
+
+Style/SoleNestedConditional:
+  Exclude:
+    - 'lib/stringyfi/converter.rb'
+
+Style/StderrPuts:
+  Exclude:
+    - 'lib/stringyfi/converter.rb'
