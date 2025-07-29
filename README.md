@@ -2,6 +2,8 @@
 
 Convert MusicXML to PIC assembler for running on the Boldport Club Stringy.
 
+[![Ruby Tests](https://github.com/tardate/stringyfi/actions/workflows/ruby-tests.yml/badge.svg)](https://github.com/tardate/stringyfi/actions/workflows/ruby-tests.yml)
+
 ## About the Stringy
 
 The [Stringy](https://www.boldport.com/products/stringy/) is an open source hardware project
