@@ -1,5 +1,4 @@
 class StringyFi::Shell
-
   attr_accessor :converter
 
   def initialize(args=[])

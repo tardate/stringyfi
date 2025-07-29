@@ -1,5 +1,0 @@
-# These are specific configuration settings required for travis-ci
-# see http://travis-ci.org/tardate/stringyfi
-language: ruby
-rvm:
-  - 2.4.1

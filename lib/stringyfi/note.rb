@@ -1,5 +1,4 @@
 class StringyFi::Note
-
   attr_accessor :name, :octave, :alter
   attr_accessor :tempo
   attr_accessor :fractional_duration
@@ -26,7 +25,7 @@ class StringyFi::Note
     duration/divisor
   end
 
-  # retrun [short, medium, long, very_long] repeats for the note
+  # return [short, medium, long, very_long] repeats for the note
   # TODO: scale medium, long, very_long durations correctly
   def stringy_durations(shortest_fractional_duration)
     time_units = (fractional_duration / shortest_fractional_duration).to_i
@@ -93,5 +92,4 @@ class StringyFi::Note
   def <=>(other)
     self.to_note_id <=> other.to_note_id
   end
-
 end

@@ -1,14 +1,12 @@
 require 'spec_helper'
 
 describe StringyFi::Note do
-
   let(:name) { 'G' }
   let(:octave) { '4' }
   let(:alter) { nil }
   let(:duration) { 1 }
   let(:duration_type) { "quarter" }
   subject(:note) { described_class.new(name, octave, alter, duration, duration_type) }
-
 
   describe "#stringy_durations" do
     subject { note.stringy_durations(shortest_fractional_duration)}
@@ -36,6 +34,7 @@ describe StringyFi::Note do
         end
       end
     end
+
     context "when 32nd is shortest" do
       let(:shortest_fractional_duration) { 1/32.0 }
       [
@@ -102,5 +101,4 @@ describe StringyFi::Note do
       it { should eql(1) }
     end
   end
-
 end

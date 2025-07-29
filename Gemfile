@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in amuse.gemspec
+# Specify gem dependencies in stringyfi.gemspec
 gemspec

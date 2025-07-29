@@ -1,7 +1,6 @@
 require 'nokogiri'
 
 class StringyFi::Converter
-
   INITIAL_OCTAVE = 1        # setup by the stringy firmware
   OCTAVE_OFFSET = 3         # how many octaves to offset the source
 
@@ -104,6 +103,7 @@ EOS
       }
     }
   end
+
   def part_list
     xml_doc.xpath('//part-list/score-part').each_with_object([]) do |part,memo|
       h = {}
@@ -160,5 +160,4 @@ EOS
   def io_stream
     File.open(filename).read
   end
-
 end
