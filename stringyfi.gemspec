@@ -18,5 +18,6 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'nokogiri'
+  spec.required_ruby_version = '>= 3.0'
+  spec.add_runtime_dependency 'nokogiri', '~> 1.18'
 end
